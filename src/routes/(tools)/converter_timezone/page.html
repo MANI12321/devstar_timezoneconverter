@@ -23,11 +23,6 @@
             <div class="select-container">
                 <select name="source-timezone" id="source-timezone">
                     <option value="UTC">UTC</option>
-                    <option value="America/New_York">New York</option>
-                    <option value="America/Los_Angeles">Los Angeles</option>
-                    <option value="Europe/London">London</option>
-                    <option value="Europe/Paris">Paris</option>
-                    <option value="Asia/Tokyo">Tokyo</option>
                 </select>
             </div>
         </div>
@@ -36,58 +31,52 @@
             <div class="select-container">
                 <select name="target-timezone" id="target-timezone">
                     <option value="UTC">UTC</option>
-                    <option value="America/New_York">New York</option>
-                    <option value="America/Los_Angeles">Los Angeles</option>
-                    <option value="Europe/London">London</option>
-                    <option value="Europe/Paris">Paris</option>
-                    <option value="Asia/Tokyo">Tokyo</option>
                 </select>
             </div>
         </div>
     </div>
+    
     <div class="container">
-            <div style="flex-direction: row;">
-                <button id="convert" type="button" style="font-size: x-large;" onclick="convertTimezone()"><b>Convert</b></button>
-            </div>
+        <div style="flex-direction: row;">
+            <button id="convert" type="button" style="font-size: x-large;" onclick="convertTimezone()"><b>Convert</b></button>
+        </div>
+</div>
+<div class="container">
+    <div class="shape2C">
+        <p><h3 style="text-align: center; font-size: x-large; margin-top: 2%;"><u>Converted Time</u></h3></p>
+        <div id="converted-time" style="color: #ffffff; font-size: medium;"></div>
     </div>
+</div>
+<section>
     <div class="container">
-        <div class="shape2C">
-            <p><h3 style="text-align: center; font-size: x-large; margin-top: 2%;"><u>Converted Time</u></h3></p>
+        <div class="shape2">
+            <p><h3 style="text-align: center; font-size: x-large; margin-top: 2%;" ><u>Add Timezone</u></h3></p>
+            <i class="fa-solid fa-trash"></i>
             <div id="converted-time" style="color: #ffffff; font-size: medium;"></div>
         </div>
     </div>
-    <section>
-        <div class="container">
-            <div class="shape2">
-                <p><h3 style="text-align: center; font-size: x-large; margin-top: 2%;" ><u>Add Timezone</u></h3></p>
-                <i class="fa-solid fa-trash"></i>
-                <div id="converted-time" style="color: #ffffff; font-size: medium;"></div>
-            </div>
+    <div class="container">
+        <div class="shape2">
+            <p><h3 style="text-align: center; font-size: x-large; margin-top: 2%;"><u>Add Timezone</u></h3></p>
+            <i class="fa-solid fa-trash"></i>
+            <div id="converted-time" style="color: #ffffff; font-size: medium;"></div>
         </div>
-        <div class="container">
-            <div class="shape2">
-                <p><h3 style="text-align: center; font-size: x-large; margin-top: 2%;"><u>Add Timezone</u></h3></p>
-                <i class="fa-solid fa-trash"></i>
-                <div id="converted-time" style="color: #ffffff; font-size: medium;"></div>
-            </div>
+    </div>
+    <div class="container">
+        <div class="shape2">
+            <p><h3 style="text-align: center; font-size: x-large; margin-top: 2%;"><u>Add Timezone</u></h3></p>
+            <i class="fa-solid fa-trash"></i>
+            <div id="converted-time" style="color: #ffffff; font-size: medium;"></div>
         </div>
-        <div class="container">
-            <div class="shape2">
-                <p><h3 style="text-align: center; font-size: x-large; margin-top: 2%;"><u>Add Timezone</u></h3></p>
-                <i class="fa-solid fa-trash"></i>
-                <div id="converted-time" style="color: #ffffff; font-size: medium;"></div>
-            </div>
+    </div>
+    <div class="container">
+        <div class="shape2">
+            <p><h3 style="text-align: center; font-size: x-large; margin-top: 2%;"><u>Add Timezone</u></h3></p>
+            <i class="fa-solid fa-trash"></i>
+            <div id="converted-time" style="color: #ffffff; font-size: medium;"></div>
         </div>
-        <div class="container">
-            <div class="shape2">
-                <p><h3 style="text-align: center; font-size: x-large; margin-top: 2%;"><u>Add Timezone</u></h3></p>
-                <i class="fa-solid fa-trash"></i>
-                <div id="converted-time" style="color: #ffffff; font-size: medium;"></div>
-            </div>
-        </div>
-    </section>
-    
-
+    </div>
+</section>
 
     <script>
         function convertTimezone() {
@@ -115,6 +104,21 @@
 
             convertedTimeDisplay.textContent = `Source Time (${sourceTimezone}): ${sourceTime}, Target Time (${targetTimezone}): ${targetTime}`;
         }
+
+        // Dynamically populate the timezone select boxes
+        const sourceTimezoneSelect = document.getElementById("source-timezone");
+        const targetTimezoneSelect = document.getElementById("target-timezone");
+        const timezones = Intl.supportedValuesOf("timeZone");
+
+        timezones.forEach((timezone) => {
+            const option = document.createElement("option");
+            option.value = timezone;
+            option.text = timezone;
+            sourceTimezoneSelect.appendChild(option);
+
+            const targetOption = option.cloneNode(true);
+            targetTimezoneSelect.appendChild(targetOption);
+        });
     </script>
 </body>
 </html>
