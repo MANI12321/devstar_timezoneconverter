@@ -481,5 +481,11 @@ export let tools = {
         icon: 'code',
         link: '/code-beautify',
         description: "Transform messy code into clean, readable scripts effortlessly with our intuitive online code beautifier. Enhance your code's aesthetics today!"
-    }
+    },
+	'time-zone-converter': {
+        name: 'Time Zone Converter',
+        icon: 'code',
+        link: '/Time',
+        description: "The Time Zone Converter can convert various time zones based on the current time as well as the user input time."
+    },
 };

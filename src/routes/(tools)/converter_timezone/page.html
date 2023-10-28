@@ -1,120 +1,238 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Time Zone Converter</title>
-    <link href="style.css" rel='stylesheet'>
-    <link rel="icon" type="image/x-icon" href="Favicon.png">
-    <script src="https://kit.fontawesome.com/48207efdcb.js" crossorigin="anonymous"></script>
+    <title>Timezone Converter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+       body {
+            font-family: Franklin Gothic Medium, sans-serif;
+            background-color: #F4F4F4;
+            background-size: 1200px;
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        h3 {
+            color: #00313d;
+            text-shadow: #006e8a;
+        }
+
+        #shape {
+            background: #00a9f7c2;
+            text-align: center;
+            border: 1px solid #9CE7FA;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 112, 139, 0.37);
+            padding: 20px;
+            height: auto;
+            width: auto ;
+            margin: 10px;
+        }
+
+        .button1 {
+            float: left;
+            padding: 5px;
+            background-color: paleturquoise;
+            border-radius: 10px;
+            border-color: #fcfeffc2;
+            align-content: center;
+            width: 35%;
+        }
+
+        .button2 {
+            float: right;
+            padding: 5px;
+            background-color: paleturquoise;
+            border-radius: 10px;
+            border-color: #fcfeffc2;
+            align-content: center;
+            width: 55%;
+        }
+
+        .timezone-box {
+            background-color: #73bbfdc2;
+            color: rgb(0, 64, 80);
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px;
+        }
+
+        #datetime {
+            border-radius: 5px;
+            border-color:#ffffff;
+        }
+
+        #container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .timezone {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .timezone label {
+            margin-right: 10px;
+        }
+
+        .deleteBtn {
+            margin: auto;
+            margin-left: 10px;
+            padding: 5px 10px;
+            background-color: rgb(255, 124, 100);
+            border-radius: 5px;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+
+        .result-box {
+            text-align: center;
+            background-color: #73bbfdc2;
+            color: rgb(0, 64, 80);
+            padding: 10px;
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            /* Adjust styles for smaller screens */
+            .timezone {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .timezone label {
+                margin-bottom: 10px;
+            }
+        }
+
+    </style>
 </head>
 <body background="world.png">
-    <h1 id="title">Time Zone Converter</h1>
-    <div class="container">
-        <div class="shape1">
-            <div style="flex-direction: row;">
-                <h3 style="float: left; margin-left: 2%;">Select Date</h3>
-                <input id="datetime" type="datetime-local">
+    <div id="container">
+        <h1 style="color: #00313d;">Timezone Converter</h1>
+        <div id="timezones">
+            <div class="timezone" id="shape">
+                <label for="datetime"><h3>Date and Time:</h3></label>
+                <input type="datetime-local" id="datetime" value="">
             </div>
+            
         </div>
-    </div>
-    <div class="container1">
-        <div class="rect1">
-            <h3>Select Source Time</h3>
-            <div class="select-container">
-                <select name="source-timezone" id="source-timezone">
-                    <option value="UTC">UTC</option>
-                    <option value="America/New_York">New York</option>
-                    <option value="America/Los_Angeles">Los Angeles</option>
-                    <option value="Europe/London">London</option>
-                    <option value="Europe/Paris">Paris</option>
-                    <option value="Asia/Tokyo">Tokyo</option>
-                </select>
-            </div>
-        </div>
-        <div class="rect2">
-            <h3>Select Target Time</h3>
-            <div class="select-container">
-                <select name="target-timezone" id="target-timezone">
-                    <option value="UTC">UTC</option>
-                    <option value="America/New_York">New York</option>
-                    <option value="America/Los_Angeles">Los Angeles</option>
-                    <option value="Europe/London">London</option>
-                    <option value="Europe/Paris">Paris</option>
-                    <option value="Asia/Tokyo">Tokyo</option>
-                </select>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-            <div style="flex-direction: row;">
-                <button id="convert" type="button" style="font-size: x-large;" onclick="convertTimezone()"><b>Convert</b></button>
-            </div>
-    </div>
-    <div class="container">
-        <div class="shape2C">
-            <p><h3 style="text-align: center; font-size: x-large; margin-top: 2%;"><u>Converted Time</u></h3></p>
-            <div id="converted-time" style="color: #ffffff; font-size: medium;"></div>
-        </div>
-    </div>
-    <section>
-        <div class="container">
-            <div class="shape2">
-                <p><h3 style="text-align: center; font-size: x-large; margin-top: 2%;" ><u>Add Timezone</u></h3></p>
-                <i class="fa-solid fa-trash"></i>
-                <div id="converted-time" style="color: #ffffff; font-size: medium;"></div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="shape2">
-                <p><h3 style="text-align: center; font-size: x-large; margin-top: 2%;"><u>Add Timezone</u></h3></p>
-                <i class="fa-solid fa-trash"></i>
-                <div id="converted-time" style="color: #ffffff; font-size: medium;"></div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="shape2">
-                <p><h3 style="text-align: center; font-size: x-large; margin-top: 2%;"><u>Add Timezone</u></h3></p>
-                <i class="fa-solid fa-trash"></i>
-                <div id="converted-time" style="color: #ffffff; font-size: medium;"></div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="shape2">
-                <p><h3 style="text-align: center; font-size: x-large; margin-top: 2%;"><u>Add Timezone</u></h3></p>
-                <i class="fa-solid fa-trash"></i>
-                <div id="converted-time" style="color: #ffffff; font-size: medium;"></div>
-            </div>
-        </div>
-    </section>
-    
+        <div>
+            <div id="addedTimezones"></div>
+            <button onclick="addTimezone()" id="addButton" class="button1"><h3>Add Timezone</h3></button>
 
+            <button onclick="convertTimezones()" class="button2"><h3>Convert Timezones</h3></button>
+        </div>
+        <div id="result"></div>
+    </div>
 
     <script>
-        function convertTimezone() {
-            const datetimeInput = document.getElementById("datetime");
-            const sourceTimezoneInput = document.getElementById("source-timezone");
-            const targetTimezoneInput = document.getElementById("target-timezone");
-            const convertedTimeDisplay = document.getElementById("converted-time");
+        let timezoneCount = 0;
 
-            const datetimeValue = new Date(datetimeInput.value);
-            const sourceTimezone = sourceTimezoneInput.value;
-            const targetTimezone = targetTimezoneInput.value;
+        function addTimezone() {
+            if (timezoneCount < 7) {
+                const newTimezoneDiv = document.createElement('div');
+                newTimezoneDiv.className = 'timezone';
+                newTimezoneDiv.id = `timezoneDiv${timezoneCount}`;
+                const options = `
+                    <option value="" disabled selected hidden>Select timezone</option>
+                    <option value="UTC">UTC</option>
+                    <option value="America/New_York">America/New_York</option>
+                    <option value="Europe/London">Europe/London</option>
+                    <option value="Asia/Tokyo">Asia/Tokyo</option>
+                    <option value="Australia/Sydney">Australia/Sydney</option>
+                    <!-- Add more timezones as needed -->
+                `;
+                const sortedOptions = options
+                    .trim()
+                    .split('\n')
+                    .map((line) => line.trim())
+                    .filter((line) => line.startsWith('<option'))
+                    .sort((a, b) => {
+                        const cityA = a.substring(a.indexOf('>') + 1, a.lastIndexOf('<'));
+                        const cityB = b.substring(b.indexOf('>') + 1, b.lastIndexOf('<'));
+                        return cityA.localeCompare(cityB);
+                    })
+                    .join('\n');
 
-            const options = {
-                timeZone: sourceTimezone,
-                hour12: false,
-                hour: "numeric",
-                minute: "numeric",
-                second: "numeric"
-            };
-
-            const sourceTime = datetimeValue.toLocaleTimeString("en-US", options);
-
-            options.timeZone = targetTimezone;
-            const targetTime = datetimeValue.toLocaleTimeString("en-US", options);
-
-            convertedTimeDisplay.textContent = `Source Time (${sourceTimezone}): ${sourceTime}, Target Time (${targetTimezone}): ${targetTime}`;
+                newTimezoneDiv.innerHTML = `
+                <div class="timezone-box">
+                    <label for="timezone${timezoneCount + 1}">Timezone ${timezoneCount + 1}:</label>
+                    <select id="timezone${timezoneCount + 1}">
+                        ${sortedOptions}
+                    </select>
+                    <button class="deleteBtn" onclick="deleteTimezone('timezoneDiv${timezoneCount}')"><i class="fa-solid fa-trash">\t Delete</i></button>
+                    </div>
+                `;
+                document.getElementById('addedTimezones').appendChild(newTimezoneDiv);
+                timezoneCount++;
+                if (timezoneCount === 7) {
+                    document.getElementById('addButton').disabled = true;
+                }
+            }
         }
+
+        function deleteTimezone(id) {
+            const element = document.getElementById(id);
+            element.parentNode.removeChild(element);
+            timezoneCount--;
+            document.getElementById('addButton').disabled = false;
+        }
+
+        const timeZoneCityMap = {
+    UTC: "UTC",
+    "America/New_York": "New York",
+    "Europe/London": "London",
+    "Asia/Tokyo": "Tokyo",
+    "Australia/Sydney": "Sydney"
+    // Add more mappings as needed
+};
+
+function convertTimezones() {
+    // Get selected timezones and times
+    const timezones = [];
+    const cityNames = [];
+    timezones.push(document.getElementById('timezone1').value);
+    cityNames.push(timeZoneCityMap[document.getElementById('timezone1').value]);
+    for (let i = 1; i < timezoneCount; i++) {
+        const currentId = `timezone${i + 1}`;
+        timezones.push(document.getElementById(currentId).value);
+        cityNames.push(timeZoneCityMap[document.getElementById(currentId).value]);
+    }
+    const datetime = new Date(document.getElementById("datetime").value);
+
+    // Display the result
+    let resultText = "<div class='result-box'><h3>Converted Times:</h3><ul>";
+            timezones.forEach((timezone, index) => {
+                const convertedDate = new Date(datetime.toLocaleString('en-US', { timeZone: timezone }));
+                resultText += `<li><strong>${cityNames[index]}:</strong> ${convertedDate.toLocaleString()}</li>`;
+            });
+            resultText += "</ul></div>";
+            document.getElementById("result").innerHTML = resultText;
+}
+
+        // Automatically set current date and time
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = `${(now.getMonth() + 1)}`.padStart(2, '0');
+        const day = `${now.getDate()}`.padStart(2, '0');
+        const hours = `${now.getHours()}`.padStart(2, '0');
+        const minutes = `${now.getMinutes()}`.padStart(2, '0');
+        document.getElementById('datetime').value = `${year}-${month}-${day}T${hours}:${minutes}`;
     </script>
 </body>
 </html>
