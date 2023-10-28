@@ -131,7 +131,6 @@
             </div>
             
         </div>
-<<<<<<< HEAD
         <div>
             <div id="addedTimezones"></div>
             <button onclick="addTimezone()" id="addButton" class="button1"><h3>Add Timezone</h3></button>
@@ -140,69 +139,6 @@
         </div>
         <div id="result"></div>
     </div>
-=======
-    </div>
-    <div class="container1">
-        <div class="rect1">
-            <h3>Select Source Time</h3>
-            <div class="select-container">
-                <select name="source-timezone" id="source-timezone">
-                    <option value="UTC">UTC</option>
-                </select>
-            </div>
-        </div>
-        <div class="rect2">
-            <h3>Select Target Time</h3>
-            <div class="select-container">
-                <select name="target-timezone" id="target-timezone">
-                    <option value="UTC">UTC</option>
-                </select>
-            </div>
-        </div>
-    </div>
-    
-    <div class="container">
-        <div style="flex-direction: row;">
-            <button id="convert" type="button" style="font-size: x-large;" onclick="convertTimezone()"><b>Convert</b></button>
-        </div>
-</div>
-<div class="container">
-    <div class="shape2C">
-        <p><h3 style="text-align: center; font-size: x-large; margin-top: 2%;"><u>Converted Time</u></h3></p>
-        <div id="converted-time" style="color: #ffffff; font-size: medium;"></div>
-    </div>
-</div>
-<section>
-    <div class="container">
-        <div class="shape2">
-            <p><h3 style="text-align: center; font-size: x-large; margin-top: 2%;" ><u>Add Timezone</u></h3></p>
-            <i class="fa-solid fa-trash"></i>
-            <div id="converted-time" style="color: #ffffff; font-size: medium;"></div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="shape2">
-            <p><h3 style="text-align: center; font-size: x-large; margin-top: 2%;"><u>Add Timezone</u></h3></p>
-            <i class="fa-solid fa-trash"></i>
-            <div id="converted-time" style="color: #ffffff; font-size: medium;"></div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="shape2">
-            <p><h3 style="text-align: center; font-size: x-large; margin-top: 2%;"><u>Add Timezone</u></h3></p>
-            <i class="fa-solid fa-trash"></i>
-            <div id="converted-time" style="color: #ffffff; font-size: medium;"></div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="shape2">
-            <p><h3 style="text-align: center; font-size: x-large; margin-top: 2%;"><u>Add Timezone</u></h3></p>
-            <i class="fa-solid fa-trash"></i>
-            <div id="converted-time" style="color: #ffffff; font-size: medium;"></div>
-        </div>
-    </div>
-</section>
->>>>>>> acce0dd4267ae9a3c010b4f21146776ab3f62c71
 
     <script>
         let timezoneCount = 0;
@@ -250,7 +186,6 @@
             }
         }
 
-<<<<<<< HEAD
         function deleteTimezone(id) {
             const element = document.getElementById(id);
             element.parentNode.removeChild(element);
@@ -298,22 +233,6 @@ function convertTimezones() {
         const hours = `${now.getHours()}`.padStart(2, '0');
         const minutes = `${now.getMinutes()}`.padStart(2, '0');
         document.getElementById('datetime').value = `${year}-${month}-${day}T${hours}:${minutes}`;
-=======
-        // Dynamically populate the timezone select boxes
-        const sourceTimezoneSelect = document.getElementById("source-timezone");
-        const targetTimezoneSelect = document.getElementById("target-timezone");
-        const timezones = Intl.supportedValuesOf("timeZone");
-
-        timezones.forEach((timezone) => {
-            const option = document.createElement("option");
-            option.value = timezone;
-            option.text = timezone;
-            sourceTimezoneSelect.appendChild(option);
-
-            const targetOption = option.cloneNode(true);
-            targetTimezoneSelect.appendChild(targetOption);
-        });
->>>>>>> acce0dd4267ae9a3c010b4f21146776ab3f62c71
     </script>
 </body>
 </html>
