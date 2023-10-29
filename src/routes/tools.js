@@ -482,10 +482,10 @@ export let tools = {
         link: '/code-beautify',
         description: "Transform messy code into clean, readable scripts effortlessly with our intuitive online code beautifier. Enhance your code's aesthetics today!"
     },
-	'time-zone-converter': {
+	'converter_timezone': {
         name: 'Time Zone Converter',
         icon: 'code',
-        link: '/time-zone-converter',
+        link: '/converter_timezone',
         description: "The Time Zone Converter can convert various time zones based on the current time as well as the user input time."
     },
 };
