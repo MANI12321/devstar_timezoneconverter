@@ -485,7 +485,7 @@ export let tools = {
 	'time-zone-converter': {
         name: 'Time Zone Converter',
         icon: 'code',
-        link: '/Time',
+        link: '/time-zone-converter',
         description: "The Time Zone Converter can convert various time zones based on the current time as well as the user input time."
     },
 };
